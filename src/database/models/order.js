@@ -1,3 +1,4 @@
+
 export default (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     userId: {
@@ -39,3 +40,4 @@ export default (sequelize, DataTypes) => {
 
   return Order;
 };
+

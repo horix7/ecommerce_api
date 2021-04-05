@@ -14,7 +14,7 @@ class OrdersController extends BaseController {
   getOrders() {
     return this.asyncWrapper(async (req, res) => {
       const { id: userId } = req.user;
-      const orders = await this.service.find({ userId }, { plain: true });
+      const orders = await this.service.getAll( { plain: true });
 
       this.sendResponse(res, orders);
     });
