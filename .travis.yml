@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - node
+cache: npm
+
+env:
+  global:
+    - NODE_ENV=test
+
+after_success:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'CREATE DATABASE restecommerce_test;' -U postgres
+  - npm run migrate
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+notifications:
+  email: false
