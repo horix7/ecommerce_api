@@ -1,8 +1,4 @@
-/**
- * Module dependencies.
- */
 import { createServer } from 'http';
-
 import { env, normalizePort } from '@helpers/utils';
 import app from '@src/app';
 import logger from '@helpers/logger';
@@ -13,9 +9,7 @@ import logger from '@helpers/logger';
 let port = normalizePort(env('PORT', 3000));
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
+
 const server = createServer(app);
 
 /**

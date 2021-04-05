@@ -3,7 +3,6 @@ import app from '@src/app';
 
 export const server = () => request(app);
 export const apiBase = '/api/v1';
-
 export const auth = async user => {
   const res = await server()
     .post('/login')
