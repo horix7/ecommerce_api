@@ -14,7 +14,6 @@ class OrderService extends BaseService {
     };
     const order = await super.create(orderData, { plain: true });
 
-    // clear cart
     CartService.clearCart(cart);
 
     return order;
