@@ -23,11 +23,7 @@ class OrderService extends BaseService {
 
   async getAllOrders() {
   
-    const order = await super.findAll({
-      include: [{
-        model: order,
-      }]
-    });
+    const order = await super.findAll();
   
     return order;
   }

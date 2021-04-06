@@ -20,9 +20,9 @@ export default class BaseService {
   }
 
 
-  async findAll(options = {}) {
+  async findAllOrders(options = {}) {
     const { plain, ...option } = options;
-    const rows = await this.model.findAll(option);
+    const rows = await this.model.findAll(options);
 
     return plain === true ? rows.map(row => row.get({ plain })) : rows;
   }
