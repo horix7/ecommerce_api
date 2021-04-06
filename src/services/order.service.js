@@ -20,6 +20,18 @@ class OrderService extends BaseService {
     return order;
   }
 
+
+  async getAllOrders() {
+  
+    const order = await super.findAll({
+      include: [{
+        model: order,
+      }]
+    });
+  
+    return order;
+  }
+
   async cancelOrder(userId, orderId) {
     const order = await super.find({ id: orderId, userId });
 

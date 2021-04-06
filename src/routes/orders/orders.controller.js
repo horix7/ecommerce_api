@@ -101,6 +101,16 @@ class OrdersController extends BaseController {
       this.sendResponse(res, order);
     });
   }
+  
+
+  getAllOrders() {
+    return this.asyncWrapper(async (req, res) => {
+      
+      const order = await this.service.getAllOrders();
+
+      this.sendResponse(res, order);
+    });
+  }
 }
 
 const controller = new OrdersController(OrderService);

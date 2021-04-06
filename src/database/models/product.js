@@ -20,7 +20,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       imageUrl: {
-        type: DataTypes.JSON,
+        type: DataTypes.JSONB,
         allowNull: false
       }
     },

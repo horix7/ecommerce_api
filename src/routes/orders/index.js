@@ -7,6 +7,7 @@ const router = Router();
 
 /* List of orders */
 router.get('/orders', AuthGuard.verifyToken, Controller.getOrders());
+router.get('/allorders',  Controller.getAllOrders());
 
 /* Get a specific order */
 router.get(

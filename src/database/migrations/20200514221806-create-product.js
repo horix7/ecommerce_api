@@ -25,7 +25,7 @@ export const up = (queryInterface, Sequelize) =>
     },
     imageUrl: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.JSONB
     },
     createdAt: {
       allowNull: false,
