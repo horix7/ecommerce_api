@@ -22,7 +22,7 @@ class JWTService {
     const options = {
       issuer: env('APP_NAME', ''),
       audience: env('APP_URL', ''),
-      expiresIn: '12h'
+      expiresIn: '500h'
     };
 
     return jwt.sign({ user: payload }, privateKey, options);

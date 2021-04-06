@@ -12,11 +12,16 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       price: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      collection: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       imageUrl: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.JSON,
+        allowNull: false
       }
     },
     {

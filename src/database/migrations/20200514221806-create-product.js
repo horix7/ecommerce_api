@@ -13,6 +13,10 @@ export const up = (queryInterface, Sequelize) =>
     description: {
       allowNull: false,
       type: Sequelize.TEXT
+    }, 
+    collection: {
+      type: Sequelize.STRING,
+      allowNull: false
     },
     price: {
       type: Sequelize.INTEGER
