@@ -19,9 +19,12 @@ export const up = (queryInterface, Sequelize) =>
       allowNull: false
     },
     price: {
+      allowNull: false,
       type: Sequelize.INTEGER
+      
     },
     imageUrl: {
+      allowNull: false,
       type: Sequelize.STRING
     },
     createdAt: {

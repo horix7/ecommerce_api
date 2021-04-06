@@ -61,13 +61,13 @@ export default class Validator {
       body(
         'title',
         "'title' is required and must exceed 2 characters"
-      ).isLength(3),
+      ).isLength(2),
       body(
         'description',
         "'description' is required and must exceed 4 characters"
       ).isLength(4),
       body('price', "'price' must be integer").isNumeric(),
-      body('imageUrl', "'price' must be integer").isURL({
+      body('imageUrl', "Image mmust be Valid ").isURL({
         require_protocol: true
       })
     ];

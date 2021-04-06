@@ -21,8 +21,8 @@ import models from '@models';
 export const productFactory = (props = {}) => {
   const defaultProps = {
     title: faker.commerce.productName(),
-    description: faker.lorem.paragraph(),
-    price: +faker.commerce.price(),
+    // description: faker.lorem.paragraph(),
+    // price: +faker.commerce.price(),
     imageUrl: faker.image.imageUrl()
   };
 

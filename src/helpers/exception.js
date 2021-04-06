@@ -77,6 +77,7 @@ export default class Exception {
    * @memberof Exception
    */
   static handleDatabaseUniqueError() {
+
     return (error, req, res, next) => {
       if (error instanceof UniqueConstraintError) {
         error.statusCode = 400;
