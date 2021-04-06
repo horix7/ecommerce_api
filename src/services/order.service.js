@@ -23,7 +23,7 @@ class OrderService extends BaseService {
 
   async getAllOrders() {
   
-    const order = await super.findAll();
+    const order = await super.findAllOrders();
   
     return order;
   }
