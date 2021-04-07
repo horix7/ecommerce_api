@@ -11,6 +11,8 @@ class AuthController extends BaseController {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
+        location: req.body.location,
+        phone: req.body.phone,
         password: req.body.password
       };
       const payload = await AuthService.register(user);

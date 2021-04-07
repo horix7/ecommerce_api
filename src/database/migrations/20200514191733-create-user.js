@@ -14,6 +14,15 @@ export const up = (queryInterface, Sequelize) =>
       allowNull: false,
       type: Sequelize.STRING
     },
+    phone: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    location: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     password: Sequelize.STRING,
     email: {
       allowNull: false,
