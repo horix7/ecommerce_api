@@ -6,7 +6,7 @@ import logger from '@helpers/logger';
 /**
  * Get port from environment and store in Express.
  */
-let port = normalizePort(env('PORT', Number(process.env.PORT)));
+let port = normalizePort(env('PORT', 4000));
 app.set('port', port);
 
 
