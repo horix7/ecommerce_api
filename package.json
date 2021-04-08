@@ -9,7 +9,7 @@
     "db:migrate": "sequelize db:migrate",
     "db:refresh": "npm run db:reset && npm run db:migrate",
     "db:reset": "sequelize db:migrate:undo:all",
-    "start:prod": "pm2 start dist/bin/index.js --name ecomerce-api",
+    "start:prod": "pm2 start dist/bin/www.js --name ecomerce-api",
     "db:seed": "sequelize db:seed:all",
     "lint": "eslint src",
     "sequelize": "sequelize",
