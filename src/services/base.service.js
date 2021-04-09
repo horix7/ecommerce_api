@@ -19,6 +19,13 @@ export default class BaseService {
     return plain === true ? rows.map(row => row.get({ plain })) : rows;
   }
 
+  async findAllOrdersIncludeUser(options = {}) {
+    const { plain, ...option } = options;
+    const rows = await this.model.findAll(option, {include: ["orders"]});
+
+    return plain === true ? rows.map(row => row.get({ plain })) : rows;
+  }
+
   async findAllOrders(options = {}) {
     const { plain, ...option } = options;
     const rows = await this.model.findAll({include: ["order"]});

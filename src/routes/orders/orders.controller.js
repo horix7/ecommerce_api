@@ -4,7 +4,6 @@ import BaseController from '../base-controller';
 
 class OrdersController extends BaseController {
   /**
-   * Fetch a list of orders
    *
    * @param {object} req - Express Request object
    * @param {object} res - Express Response object

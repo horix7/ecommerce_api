@@ -30,6 +30,14 @@ class OrderService extends BaseService {
     return order;
   }
 
+
+  async getAllOrders() {
+  
+    const order = await super.findAllOrdersIncludeUser();
+  
+    return order;
+  }
+
   async cancelOrder(userId, orderId) {
     const order = await super.find({ id: orderId, userId });
 
