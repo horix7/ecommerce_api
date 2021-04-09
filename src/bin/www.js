@@ -13,8 +13,6 @@ app.set('port', port);
 const server = createServer(app);
 
 /**
- * Event listener for HTTP server "error" event.
- *
  * @param {object} error - Error object
  * @returns {void}
  */
@@ -55,3 +53,4 @@ const onListening = () => {
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+

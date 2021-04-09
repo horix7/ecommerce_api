@@ -4,13 +4,16 @@ import BaseService from './base.service';
 import CartService from './cart.service';
 
 class OrderService extends BaseService {
-  async placeOrder(payload) {
+  async placeOrder(payload, body) {
     const { userId } = payload;
     const cart = await CartService.cart(userId);
     const orderData = {
       userId: cart.userId,
       items: cart.cartItem.items,
-      grandTotal: cart.cartItem.totalAmount
+      grandTotal: cart.cartItem.totalAmount,
+      location: body.location,
+      street: body.street,
+      message: body.message,
     };
     const order = await super.create(orderData, { plain: true });
 

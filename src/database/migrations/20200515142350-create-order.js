@@ -17,6 +17,18 @@ export const up = (queryInterface, Sequelize) =>
     grandTotal: {
       type: Sequelize.INTEGER
     },
+    location: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    street: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    message: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     status: {
       type: Sequelize.ENUM(
         'pending',
