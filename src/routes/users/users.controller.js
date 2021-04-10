@@ -40,6 +40,16 @@ class UsersController extends BaseController {
     });
   }
 
+  getDbCounts() {
+    return this.asyncWrapper(async (req, res) => {
+      
+      const counts = await this.service.findDatabaseStats();
+      ExceptionHandler.throwErrorIfNull(counts);
+      this.sendResponse(res, counts);
+
+    });
+  }
+
   /**
    * Create a new user
    *

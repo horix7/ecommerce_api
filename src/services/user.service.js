@@ -99,6 +99,12 @@ class UserService extends BaseService {
     const { plain } = options;
     return plain === true ? result.get({ plain }) : result;
   }
+
+  async getDatabaseCounts() {
+    const results = await this.model.getDatabaseCounts()
+
+    return result
+  }
 }
 
 const { User } = models;

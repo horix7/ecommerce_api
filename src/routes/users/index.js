@@ -11,6 +11,12 @@ AuthGuard.verifyToken,
 AuthGuard.adminOnly,
 Controller.getAllUsers());
 
+router.get('/counts',
+// AuthGuard.verifyToken,
+// AuthGuard.adminOnly,
+Controller.getDbCounts());
+
+
 /* Get a single user */
 router.get('/users/:id', Validator.validate('idParam'), Controller.getUser());
 

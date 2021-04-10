@@ -20,6 +20,20 @@ export default class BaseService {
     return plain === true ? rows.map(row => row.get({ plain })) : rows;
   }
 
+
+  async findDatabaseStats() {
+    const productsCounts = await this.model.sequelize.query("select count(*) from \"Products\"")
+    const userCount = await this.model.sequelize.query("select count(*) from \"Users\"")
+    const orderCount = await this.model.sequelize.query("select count(*) from \"Orders\"")
+    const revenue = await this.model.sequelize.query("select \"grandTotal\" from \"Orders\"")
+
+    return {
+      products: productsCounts[0][0].count,
+      users: userCount[0][0].count,
+      orders: orderCount[0][0].count,
+      revenue: revenue[0].map(elem => elem.grandTotal).reduce((a,b) => a + b)
+    }
+  }
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
     const rows = await this.model.sequelize.query("select * from \"Orders\" inner join \"Users\" on true", {
@@ -67,7 +81,7 @@ export default class BaseService {
 
     return row && plain === true ? row.get({ plain }) : row;
   }
-
+  
   /**
    * Create a new resource
    *
