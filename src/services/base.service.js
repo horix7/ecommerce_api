@@ -1,4 +1,5 @@
 import ExceptionHandler from '@helpers/exception';
+import { QueryTypes } from 'sequelize';
 
 export default class BaseService {
   constructor(model) {
@@ -21,9 +22,13 @@ export default class BaseService {
 
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
-    const rows = await this.model.findAll(option, {include: ["orders"]});
+    const rows = await this.model.sequelize.query("select * from \"Orders\" inner join \"Users\" on true", {
+      plain: false,
+      raw: true,
+      type: QueryTypes.SELECT
+    });
 
-    return plain === true ? rows.map(row => row.get({ plain })) : rows;
+    return  rows;
   }
 
   async findAllOrders(options = {}) {

@@ -1,6 +1,8 @@
 import OrderService from '@services/order.service';
 import ExceptionHandler from '@helpers/exception';
 import BaseController from '../base-controller';
+import RawQueryService from "../../services/rawQueries.service"
+
 
 class OrdersController extends BaseController {
   /**
