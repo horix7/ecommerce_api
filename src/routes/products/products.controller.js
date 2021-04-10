@@ -4,8 +4,6 @@ import BaseController from '../base-controller';
 
 class ProductsController extends BaseController {
   /**
-   * Fetch a list of users
-   *
    * @param {object} req - Express Request object
    * @param {object} res - Express Response object
    * @param {Function} res - Express next function
@@ -13,15 +11,29 @@ class ProductsController extends BaseController {
    */
   getAllProducts() {
     return this.asyncWrapper(async (req, res) => {
-      const products = await this.service.getAll({ plain: true });
+      let products = await this.service.getAll({ plain: true });
+       products = products.map(elem => {
+        const { id, title, description, price, collection, createdAt, updatedAt} = elem
+        
+        try {
+          const imageAddress = JSON.parse(elem.imageUrl)
+          const imageUrl = imageAddress[0]
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl, imageAddress
+          }
+        } catch(error) {
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl: elem.imageUrl, imageAddress : [elem.imageUrl]
+          }
+        }
+        
+      })
 
       this.sendResponse(res, products);
     });
   }
 
   /**
-   * Fetch a specific user by `id`
-   *
    * @param {object} req - Express Request object
    * @param {object} res - Express Response object
    * @param {Function} res - Express next function
@@ -30,10 +42,22 @@ class ProductsController extends BaseController {
   getProduct() {
     return this.asyncWrapper(async (req, res) => {
       const { id: productId } = req.params;
-      const product = await this.service.getById(productId, { plain: true });
+      let product = await this.service.getById(productId, { plain: true });
 
       ExceptionHandler.throwErrorIfNull(product);
-
+      const { id, title, description, price, collection, createdAt, updatedAt} = product
+        
+      try {
+        const imageAddress = JSON.parse(product.imageUrl)
+        const imageUrl = imageAddress[0]
+        product =  {
+          id,title, description,price,collection,createdAt, updatedAt, imageUrl, imageAddress
+        }
+      } catch(error) {
+        product =  {
+          id,title, description,price,collection,createdAt, updatedAt, imageUrl: product.imageUrl, imageAddress : [product.imageUrl]
+        }
+      }
       this.sendResponse(res, product);
     });
   }
