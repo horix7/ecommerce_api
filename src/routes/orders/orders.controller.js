@@ -6,18 +6,11 @@ import user from '@factories/user';
 
 
 class OrdersController extends BaseController {
-  /**
-   *
-   * @param {object} req - Express Request object
-   * @param {object} res - Express Response object
-   * @param {Function} res - Express next function
-   * @memberof OrdersController
-   */
-  
+
   getOrders() {
     return this.asyncWrapper(async (req, res) => {
       const { id: userId } = req.user;
-      const orders = await this.service.find({ userId }, { plain: true });
+      const orders = await this.service.findWhereId(userId);
 
       this.sendResponse(res, orders);
     });

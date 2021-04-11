@@ -36,6 +36,18 @@ export default class BaseService {
       revenue: revenue[0].map(elem => elem.grandTotal).reduce((a,b) => a + b)
     }
   }
+
+
+  async findWhereId(id) {
+    const rows = await this.model.sequelize.query(`select * from \"Orders\" where \"userId\"=${id}`, {
+      plain: false,
+      raw: true,
+      type: QueryTypes.SELECT
+    });
+    
+      return rows 
+  } 
+  
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
     const rows = await this.model.sequelize.query("select * from \"Orders\" inner join \"Users\" on true", {
