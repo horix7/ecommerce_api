@@ -37,6 +37,27 @@ class AuthService {
     const token = JWTService.sign(user);
     return { ...user, token };
   }
+
+  static async Adminlogin(email, password) {
+    // fetch user data
+    const user = await UserService.getByEmail(email, { plain: true });
+
+    // compare password
+    if (!bcrypt.compareSync(password, user.password)) {
+      const { INVALID_CREDENTIALS } = messages;
+      throw createError(403, INVALID_CREDENTIALS);
+    }
+
+    // generate jwt token from user payload
+    delete user.password;
+    const isAdmin =  user.isAdmin;
+    if(isAdmin) {
+      const token = JWTService.sign(user);
+    return { ...user, token };
+    }else {
+      throw new Error("not An Admin ")
+    }
+  }
 }
 
 export default AuthService;

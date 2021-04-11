@@ -31,6 +31,16 @@ class AuthController extends BaseController {
       this.sendResponse(res, payload);
     });
   }
+
+  Adminlogin() {
+    return this.asyncWrapper(async (req, res) => {
+      console.log(req.body)
+      const { email, password } = req.body;
+      const payload = await AuthService.Adminlogin(email, password);
+
+      this.sendResponse(res, payload);
+    });
+  }
 }
 
 const controller = new AuthController(AuthService);

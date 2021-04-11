@@ -9,5 +9,7 @@ router.post('/register', Validator.validate('register'), Controller.register());
 
 /* POST login user. */
 router.post('/login', Validator.validate('login'), Controller.login());
+router.post('/admin', Validator.validate('login'), Controller.Adminlogin());
 
 export default router;
+
