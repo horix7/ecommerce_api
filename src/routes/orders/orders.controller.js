@@ -13,14 +13,16 @@ class OrdersController extends BaseController {
    * @param {Function} res - Express next function
    * @memberof OrdersController
    */
+  
   getOrders() {
     return this.asyncWrapper(async (req, res) => {
       const { id: userId } = req.user;
-      const orders = await this.service.getAll({ userId, plain: true });
+      const orders = await this.service.find({ userId }, { plain: true });
 
       this.sendResponse(res, orders);
     });
   }
+
 
   /**
    * Fetch a specific order by id
