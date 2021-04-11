@@ -24,6 +24,7 @@ class AuthController extends BaseController {
 
   login() {
     return this.asyncWrapper(async (req, res) => {
+      console.log(req.body)
       const { email, password } = req.body;
       const payload = await AuthService.login(email, password);
 
