@@ -31,7 +31,7 @@ class OrderService extends BaseService {
   }
 
 
-  async getAllOrders() {
+  async getAllOrdersWithUsers() {
   
     const order = await super.findAllOrdersIncludeUser();
   

@@ -7,17 +7,13 @@ import JWTService from '@services/jwt.service';
 import { messages } from '@helpers/constants';
 
 /**
- * Auth Service Module
- *
  * @export
  * @class AuthService
  */
 class AuthService {
   static async register(user) {
-    // create and persist user
     const newUser = await UserService.create(user, { plain: true });
 
-    // generate jwt token from user payload
     const token = JWTService.sign(newUser);
     return { ...newUser, token };
   }

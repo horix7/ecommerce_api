@@ -2,24 +2,20 @@ import OrderService from '@services/order.service';
 import ExceptionHandler from '@helpers/exception';
 import BaseController from '../base-controller';
 import RawQueryService from "../../services/rawQueries.service"
+import user from '@factories/user';
 
 
 class OrdersController extends BaseController {
-  /**
-   *
-   * @param {object} req - Express Request object
-   * @param {object} res - Express Response object
-   * @param {Function} res - Express next function
-   * @memberof OrdersController
-   */
+
   getOrders() {
     return this.asyncWrapper(async (req, res) => {
       const { id: userId } = req.user;
-      const orders = await this.service.getAll( { plain: true });
+      const orders = await this.service.findWhereId(userId);
 
       this.sendResponse(res, orders);
     });
   }
+
 
   /**
    * Fetch a specific order by id
@@ -107,7 +103,7 @@ class OrdersController extends BaseController {
   getAllOrders() {
     return this.asyncWrapper(async (req, res) => {
       
-      const order = await this.service.getAllOrders();
+      const order = await this.service.getAllOrdersWithUsers();
 
       this.sendResponse(res, order);
     });
