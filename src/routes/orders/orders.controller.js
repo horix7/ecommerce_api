@@ -2,6 +2,7 @@ import OrderService from '@services/order.service';
 import ExceptionHandler from '@helpers/exception';
 import BaseController from '../base-controller';
 import RawQueryService from "../../services/rawQueries.service"
+import user from '@factories/user';
 
 
 class OrdersController extends BaseController {
@@ -15,7 +16,7 @@ class OrdersController extends BaseController {
   getOrders() {
     return this.asyncWrapper(async (req, res) => {
       const { id: userId } = req.user;
-      const orders = await this.service.getAll( { plain: true });
+      const orders = await this.service.getAll({ userId, plain: true });
 
       this.sendResponse(res, orders);
     });
@@ -107,7 +108,7 @@ class OrdersController extends BaseController {
   getAllOrders() {
     return this.asyncWrapper(async (req, res) => {
       
-      const order = await this.service.getAllOrders();
+      const order = await this.service.getAllOrdersWithUsers();
 
       this.sendResponse(res, order);
     });
