@@ -29,11 +29,21 @@ export default class BaseService {
     const orderCount = await this.model.sequelize.query("select count(*) from \"Orders\"")
     const revenue = await this.model.sequelize.query("select \"grandTotal\" from \"Orders\"")
 
-    return {
-      products: productsCounts[0][0].count,
-      users: userCount[0][0].count,
-      orders: orderCount[0][0].count,
-      revenue: revenue[0].map(elem => elem.grandTotal).reduce((a,b) => a + b)
+    try {
+    
+      return {
+        products: productsCounts[0][0].count,
+        users: userCount[0][0].count,
+        orders: orderCount[0][0].count,
+        revenue: revenue[0].map(elem => elem.grandTotal).reduce((a,b) => a + b)  
+      }
+    } catch (error) {
+      return {
+        products: productsCounts[0][0].count,
+        users: userCount[0][0].count,
+        orders: orderCount[0][0].count,
+        revenue: 0
+      }
     }
   }
 
