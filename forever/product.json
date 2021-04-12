@@ -1,0 +1,12 @@
+
+{
+    "uid": "dashboard",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/home/paul/Documents/projects/freelance/shoesClimate/restful-ecommerce/dist",
+    "logFile": "/home/paul/Documents/projects/freelance/shoesClimate/restful-ecommerce/logs/forever.log",
+    "outFile": "/home/paul/Documents/projects/freelance/shoesClimate/restful-ecommerce/logs/out.log",
+    "errFile": "/home/paul/Documents/projects/freelance/shoesClimate/restful-ecommerce/logs/error.log"
+}
+
