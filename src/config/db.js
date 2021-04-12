@@ -16,8 +16,8 @@ const dbOptions = dbURL => {
 module.exports = {
   [environment]: {
     username: env('DB_USERNAME', 'postgres'),
-    password: env('DB_PASSWORD', null),
-    database: env('DB_DATABASE', 'authorspad'),
+    password: env('DB_PASSWORD', 'postgres'),
+    database: env('DB_DATABASE', 'shoesclimate'),
     host: env('DB_HOST', '127.0.0.1'),
     dialect: env('DB_CONNECTION', 'postgres'),
     logging: env('DB_LOGGING', false),
