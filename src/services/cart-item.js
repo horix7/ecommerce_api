@@ -18,7 +18,7 @@ export default class CartItem {
     });
   }
 
-  addToCart(product = null, quantity = 1) {
+  addToCart(product = null, quantity = 1, size) {
     const qty = +quantity;
 
     if (!this.inCart(product.id)) {
@@ -28,6 +28,7 @@ export default class CartItem {
         description: product.description,
         price: product.price,
         image: product.imageUrl,
+        size,
         qty
       };
 
@@ -38,6 +39,7 @@ export default class CartItem {
       const amount = product.price * qty;
       this.totalAmount += amount;
       this.items[index].qty += qty;
+      this.items[index]["size"] = size;
     }
     return this;
   }

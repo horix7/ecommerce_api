@@ -19,8 +19,7 @@ class CartService extends BaseService {
    * @memberof CartService
    */
   async addToCart(data, options) {
-    const { userId, productId, qty } = data;
-
+    const { userId, productId, qty, size } = data;
     const [result] = await this.model.findOrCreate({
       where: { userId: +userId },
       defaults: { cartItem: new CartItem() }
@@ -33,7 +32,7 @@ class CartService extends BaseService {
 
     ExceptionHandler.throwErrorIfNull(product);
 
-    const cart = cartItem.addToCart(product, qty);
+    const cart = cartItem.addToCart(product, qty, size);
 
     result.cartItem = cart;
     result.save();
