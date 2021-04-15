@@ -8,8 +8,7 @@ load({
   silent: true,
   path: resolve(__dirname, dotenvFile),
   defaults: resolve(__dirname, '.env'),
-  schema: resolve(__dirname, '.env.example'),
-  // errorOnMissing: env('NODE_ENV') === 'development',
+  errorOnMissing: env('NODE_ENV') === 'development',
   errorOnExtra: false,
   errorOnRegex: false,
   overrideProcessEnv: false

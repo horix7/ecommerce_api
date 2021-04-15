@@ -1,8 +1,8 @@
 import { env } from '@helpers/utils';
 
-const environment = env('NODE_ENV', 'development');
+const environment = env('NODE_ENV');
 const databaseURL = env('DATABASE_URL');
-
+ 
 const dbOptions = dbURL => {
   const options = {
     use_env_variable: 'DATABASE_URL',
@@ -15,11 +15,11 @@ const dbOptions = dbURL => {
 
 module.exports = {
   [environment]: {
-    username: env('DB_USERNAME', 'postgres'),
-    password: env('DB_PASSWORD', 'postgres'),
-    database: env('DB_DATABASE', 'shoesclimate'),
-    host: env('DB_HOST', '127.0.0.1'),
-    dialect: env('DB_CONNECTION', 'postgres'),
+    username: env('DB_USERNAME'),
+    password: env('DB_PASSWORD'),
+    database: env('DB_DATABASE'),
+    host: env('DB_HOST'),
+    dialect: env('DB_CONNECTION'),
     logging: env('DB_LOGGING', false),
     ...dbOptions(databaseURL)
   },
