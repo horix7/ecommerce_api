@@ -6,6 +6,8 @@ import cors from 'cors'
 import httpLogger from '@middlewares/http-logger';
 import Exception from '@helpers/exception';
 import { messages } from '@helpers/constants';
+require("dotenv").config()
+
 
 import routeModules from './routes';
 

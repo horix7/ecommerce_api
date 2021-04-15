@@ -2,7 +2,6 @@ import { createServer } from 'http';
 import { env, normalizePort } from '@helpers/utils';
 import app from '@src/app';
 import logger from '@helpers/logger';
-
 /**
  * Get port from environment and store in Express.
  */

@@ -1,3 +1,4 @@
+require("dotenv").config()
 /**
  * Gets the value of an environment variable.
  *
