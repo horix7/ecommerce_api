@@ -29,6 +29,11 @@ export const up = (queryInterface, Sequelize) =>
       type: Sequelize.STRING,
       allowNull: false
     },
+
+    customer: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     status: {
       type: Sequelize.ENUM(
         'pending',

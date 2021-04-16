@@ -60,11 +60,7 @@ export default class BaseService {
   
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
-    const rows = await this.model.sequelize.query("select * from \"Orders\" inner join \"Users\" on true", {
-      plain: false,
-      raw: true,
-      type: QueryTypes.SELECT
-    });
+    const rows = await this.model.findAll(option)
 
     return  rows;
   }

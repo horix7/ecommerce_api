@@ -27,6 +27,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    customer: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     message: {
       type: DataTypes.STRING,
       allowNull: false
