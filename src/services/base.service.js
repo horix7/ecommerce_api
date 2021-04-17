@@ -58,6 +58,18 @@ export default class BaseService {
       return rows 
   } 
   
+
+  async findWhereCollection(collection) {
+    const rows = await this.model.sequelize.query(`select * from \"Products\" where \"collection\"=\'${collection}\'`, {
+      plain: false,
+      raw: true,
+      type: QueryTypes.SELECT
+    });
+    
+      return rows 
+  } 
+  
+
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
     const rows = await this.model.findAll(option)

@@ -113,6 +113,14 @@ class ProductsController extends BaseController {
       this.sendResponse(res, null, null, 204);
     });
   }
+
+  getProductByColection()  {
+    return this.asyncWrapper(async (req, res) => {
+
+      const products = await this.service.findWhereCollection(req.params.collection);
+      this.sendResponse(res, products);
+    });
+  }
 }
 
 const controller = new ProductsController(ProductService);

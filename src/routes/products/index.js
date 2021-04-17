@@ -16,6 +16,11 @@ router.get(
   Controller.getProduct()
 );
 
+router.get(
+  '/products/collection/:collection',
+  Controller.getProductByColection()
+);
+
 /* Create a product */
 router.post(
   '/products',
