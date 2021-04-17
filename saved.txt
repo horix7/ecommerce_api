@@ -1,0 +1,1 @@
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build && npm run db:migrate",
