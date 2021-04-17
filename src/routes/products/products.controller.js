@@ -117,7 +117,7 @@ class ProductsController extends BaseController {
   getProductByColection()  {
     return this.asyncWrapper(async (req, res) => {
 
-      const products = await this.service.findWhereCollection(req.params.collection);
+      let products = await this.service.findWhereCollection(req.params.collection);
       products = products.map(elem => {
         const { id, title, description, price, collection, createdAt, updatedAt} = elem
         
