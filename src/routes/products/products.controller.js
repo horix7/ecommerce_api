@@ -114,10 +114,36 @@ class ProductsController extends BaseController {
     });
   }
 
+
+
   getProductByColection()  {
     return this.asyncWrapper(async (req, res) => {
 
       let products = await this.service.findWhereCollection(req.params.collection);
+      products = products.map(elem => {
+        const { id, title, description, price, collection, createdAt, updatedAt} = elem
+        
+        try {
+          const imageAddress = JSON.parse(elem.imageUrl)
+          const imageUrl = imageAddress[0]
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl, imageAddress
+          }
+        } catch(error) {
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl: elem.imageUrl, imageAddress : [elem.imageUrl]
+          }
+        }
+        
+      })
+      this.sendResponse(res, products);
+    });
+  }
+
+  searchProducResults()  {
+    return this.asyncWrapper(async (req, res) => {
+
+      let products = await this.service.SearchProducts(req.query.q);
       products = products.map(elem => {
         const { id, title, description, price, collection, createdAt, updatedAt} = elem
         

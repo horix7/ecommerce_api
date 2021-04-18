@@ -71,6 +71,20 @@ export default class BaseService {
   
   
 
+  async SearchProducts(description) {
+    const query = description.split(" ").join("&").split("&&").join("&").split("&&").join("&")
+    const rows = await this.model.sequelize.query(`select * from "Products" where to_tsvector(title || '' || description) @@ to_tsquery(\'${query}\')`, {
+      plain: false,
+      raw: true,
+      type: QueryTypes.SELECT
+    });
+    
+      return rows 
+  } 
+  
+  
+
+
   async findAllOrdersIncludeUser(options = {}) {
     const { plain, ...option } = options;
     const rows = await this.model.findAll(option)

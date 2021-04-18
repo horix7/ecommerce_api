@@ -17,6 +17,11 @@ router.get(
 );
 
 router.get(
+  '/product/search',
+  Controller.searchProducResults()
+);
+
+router.get(
   '/products/collection/:collection',
   Controller.getProductByColection()
 );
