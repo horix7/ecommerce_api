@@ -9,13 +9,17 @@
     "db:migrate": "sequelize db:migrate",
     "db:refresh": "npm run db:reset && npm run db:migrate",
     "db:reset": "sequelize db:migrate:undo:all",
-    "start": "pm2 start dist/bin/www.js --name ecomerce-api",
+    "start": "npm run build && pm2 start dist/bin/www.js --name ecomerce-api",
     "db:seed": "sequelize db:seed:all",
     "lint": "eslint src",
     "sequelize": "sequelize",
     "serve": "nodemon -r ./config.js --exec babel-node src/bin/www.js",
     "start:first": "node ./dist/bin/www.js",
+    "list:pm": "pm2 list",
+    "pm:reload": "npm run build && pm2 restart ecomerce-api",
     "test": "jest --coverage",
+    "pm:logs": "pm2 log ecomerce-api",
+    "pm:kill": "pm2 delete ecomerce-api",
     "test:watch": "jest --watch"
   },
   "dependencies": {

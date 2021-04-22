@@ -4,8 +4,8 @@ const memCache = new cache.Cache()
 
 class Caching {
 
-     
-    cacheMiddleware = (req, res, next) => {
+    cacheMiddleware(req, res, next) {
+        
 
             let key =  '__express__' + req.originalUrl || req.url
             let cacheContent = memCache.get(key);

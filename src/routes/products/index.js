@@ -5,11 +5,9 @@ import AuthGuard from '@middlewares/authenticate';
 import Controller from './products.controller';
 import Caching from '../../middlewares/cachingresults'
 
-
-
 const router = Router();
 
-router.get('/products', Caching.cacheMiddleware(),  Controller.getAllProducts());
+router.get('/products', Caching.cacheMiddleware,  Controller.getAllProducts());
 
 router.get(
   '/products/:id',
@@ -19,13 +17,13 @@ router.get(
 
 router.get(
   '/product/search',
-  Caching.cacheMiddleware(),
+  Caching.cacheMiddleware,
   Controller.searchProducResults()
 );
 
 router.get(
   '/products/collection/:collection',
-  Caching.cacheMiddleware(),
+  Caching.cacheMiddleware,
   Controller.getProductByColection()
 );
 
