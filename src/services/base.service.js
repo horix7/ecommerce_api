@@ -23,6 +23,7 @@ export default class BaseService {
   }
 
 
+
   async findDatabaseStats() {
     const productsCounts = await this.model.sequelize.query("select count(*) from \"Products\"")
     const userCount = await this.model.sequelize.query("select count(*) from \"Users\"")
