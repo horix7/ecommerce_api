@@ -9,12 +9,12 @@
     "db:migrate": "sequelize db:migrate",
     "db:refresh": "npm run db:reset && npm run db:migrate",
     "db:reset": "sequelize db:migrate:undo:all",
-    "start:prod": "pm2 start dist/bin/www.js --name ecomerce-api",
+    "start": "pm2 start dist/bin/www.js --name ecomerce-api",
     "db:seed": "sequelize db:seed:all",
     "lint": "eslint src",
     "sequelize": "sequelize",
     "serve": "nodemon -r ./config.js --exec babel-node src/bin/www.js",
-    "start": "node ./dist/bin/www.js",
+    "start:first": "node ./dist/bin/www.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
@@ -39,6 +39,7 @@
     "morgan": "~1.9.1",
     "pg": "^8.2.0",
     "pg-hstore": "^2.3.3",
+    "pm2": "^4.5.6",
     "sequelize": "^5.21.9",
     "supertest": "^4.0.2",
     "winston": "^3.2.1"

@@ -3,13 +3,14 @@ import { Router } from 'express';
 import Validator from '@middlewares/validator';
 import AuthGuard from '@middlewares/authenticate';
 import Controller from './products.controller';
+import Caching from '../../middlewares/cachingresults'
+
+
 
 const router = Router();
 
-/* List of products */
-router.get('/products', Controller.getAllProducts());
+router.get('/products', Caching.cacheMiddleware(),  Controller.getAllProducts());
 
-/* Get a single product */
 router.get(
   '/products/:id',
   Validator.validate('idParam'),
@@ -18,11 +19,13 @@ router.get(
 
 router.get(
   '/product/search',
+  Caching.cacheMiddleware(),
   Controller.searchProducResults()
 );
 
 router.get(
   '/products/collection/:collection',
+  Caching.cacheMiddleware(),
   Controller.getProductByColection()
 );
 
