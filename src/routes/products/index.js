@@ -7,7 +7,8 @@ import Caching from '../../middlewares/cachingresults'
 
 const router = Router();
 
-router.get('/products', Caching.cacheMiddleware,  Controller.getAllProducts());
+router.get('/shop', Caching.cacheMiddleware,  Controller.getAllProducts());
+router.get('/products', Caching.cacheMiddleware,  Controller.getAllProductsFeat());
 
 
 router.get('/products/home', Caching.cacheMiddleware,  Controller.getHomeProducts());

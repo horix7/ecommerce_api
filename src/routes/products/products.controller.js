@@ -33,6 +33,14 @@ class ProductsController extends BaseController {
     });
   }
 
+
+  getAllProductsFeat() {
+    return this.asyncWrapper(async (req, res) => {
+      let products = await this.service.getFeaturedProducts()
+      this.sendResponse(res, products);
+    });
+  }
+
   /**
    * @param {object} req - Express Request object
    * @param {object} res - Express Response object
