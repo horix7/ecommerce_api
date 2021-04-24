@@ -55,12 +55,13 @@ export default class BaseService {
       return products.reverse()
     }
     return {
+      AIRFORCE: convertProduct(air_force[0]),
       JORDAN: convertProduct(jordans[0]),
-      NIKEDUNKs: convertProduct(NIKEDUNKs[0]),
-      NEWBALANCE: convertProduct(NEWBALANCE[0]),
-      YEEZY: convertProduct(YEEZY[0]),
       AIRMAX: convertProduct(air_max[0]),
-      AIRFORCE: convertProduct(air_force[0])
+      YEEZY: convertProduct(YEEZY[0]),
+      NEWBALANCE: convertProduct(NEWBALANCE[0]),
+      NIKEDUNKs: convertProduct(NIKEDUNKs[0]),
+
     }
   }
 
