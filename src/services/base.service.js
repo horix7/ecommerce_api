@@ -22,7 +22,7 @@ export default class BaseService {
     return plain === true ? rows.map(row => row.get({ plain })) : rows;
   }
 
-  getFeaturedProducts = async () => {
+  async getFeaturedProducts  ()  {
     const convertProduct  = (products) => {
       products = products.map(elem => {
         const { id, title, description, price, collection, createdAt, updatedAt} = elem
