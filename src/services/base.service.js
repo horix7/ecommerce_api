@@ -26,12 +26,12 @@ export default class BaseService {
 
   async HomePageQuery() {
 
-    const jordans = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"JORDANs"}\' LIMIT 9`)
-    const NIKEDUNKs = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NIKE DUNKs"}\' LIMIT 9`)
-    const NEWBALANCE = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NEW BALANCE"}\' LIMIT 9`)
-    const YEEZY = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"YEEZY"}\' LIMIT 9`)
-    const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\' LIMIT 9`)
-    const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\' LIMIT 9`)
+    const jordans = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"JORDANs"}\' LIMIT 8`)
+    const NIKEDUNKs = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NIKE DUNKs"}\' LIMIT 8`)
+    const NEWBALANCE = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NEW BALANCE"}\' LIMIT 8`)
+    const YEEZY = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"YEEZY"}\' LIMIT 8`)
+    const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\' LIMIT 8`)
+    const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\' LIMIT 8`)
 
 
     const convertProduct  = (products) => {
@@ -52,7 +52,7 @@ export default class BaseService {
         
       })
 
-      return products
+      return products.reverse()
     }
     return {
       JORDAN: convertProduct(jordans[0]),
