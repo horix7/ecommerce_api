@@ -33,13 +33,34 @@ export default class BaseService {
     const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\' LIMIT 12`)
     const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\' LIMIT 12`)
 
+
+    const convertProduct  = (products) => {
+      products = products.map(elem => {
+        const { id, title, description, price, collection, createdAt, updatedAt} = elem
+        
+        try {
+          const imageAddress = JSON.parse(elem.imageUrl)
+          const imageUrl = imageAddress[0]
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl, imageAddress
+          }
+        } catch(error) {
+          return {
+            id,title, description,price,collection,createdAt, updatedAt, imageUrl: elem.imageUrl, imageAddress : [elem.imageUrl]
+          }
+        }
+        
+      })
+
+      return products
+    }
     return {
-      JORDAN: jordans[0],
-      NIKEDUNKs: NIKEDUNKs[0],
-      NEWBALANCE: NEWBALANCE[0],
-      YEEZY: YEEZY[0],
-      AIRMAX: air_max[0],
-      AIRFORCE: air_force[0]
+      JORDAN: convertProduct(jordans[0]),
+      NIKEDUNKs: convertProduct(NIKEDUNKs[0]),
+      NEWBALANCE: convertProduct(NEWBALANCE[0]),
+      YEEZY: convertProduct(YEEZY[0]),
+      AIRMAX: convertProduct(air_max[0]),
+      AIRFORCE: convertProduct(air_force[0])
     }
   }
 
