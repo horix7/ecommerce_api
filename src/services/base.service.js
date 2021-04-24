@@ -24,6 +24,27 @@ export default class BaseService {
 
 
 
+  async HomePageQuery() {
+
+    const jordans = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"JORDANs"}\' LIMIT 12`)
+    const NIKEDUNKs = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NIKE DUNKs"}\' LIMIT 12`)
+    const NEWBALANCE = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NEW BALANCE"}\' LIMIT 12`)
+    const YEEZY = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"YEEZY"}\' LIMIT 12`)
+    const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\' LIMIT 12`)
+    const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\' LIMIT 12`)
+
+    return {
+      JORDAN: jordans[0],
+      NIKEDUNKs: NIKEDUNKs[0],
+      NEWBALANCE: NEWBALANCE[0],
+      YEEZY: YEEZY[0],
+      AIRMAX: air_max[0],
+      AIRFORCE: air_force[0]
+    }
+  }
+
+
+
   async findDatabaseStats() {
     const productsCounts = await this.model.sequelize.query("select count(*) from \"Products\"")
     const userCount = await this.model.sequelize.query("select count(*) from \"Users\"")

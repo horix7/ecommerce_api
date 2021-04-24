@@ -9,6 +9,9 @@ const router = Router();
 
 router.get('/products', Caching.cacheMiddleware,  Controller.getAllProducts());
 
+
+router.get('/products/home', Caching.cacheMiddleware,  Controller.getHomeProducts());
+
 router.get(
   '/products/:id',
   Validator.validate('idParam'),

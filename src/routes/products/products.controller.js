@@ -97,6 +97,17 @@ class ProductsController extends BaseController {
     });
   }
 
+  getHomeProducts() {
+
+    return this.asyncWrapper(async (req, res) => {
+
+      const product = await this.service.HomePageQuery();
+
+      this.sendResponse(res, product);
+    });
+
+  }
+
   /**
    * Remove a specific user
    *
