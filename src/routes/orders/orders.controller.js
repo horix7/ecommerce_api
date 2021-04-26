@@ -66,6 +66,14 @@ class OrdersController extends BaseController {
     });
   }
 
+  getReferalByUser() {
+    return this.asyncWrapper(async (req, res) => {
+      let referals = await this.service.getReferalMade();
+      referals = referals.filter(req.params.email)
+      this.sendResponse(res, referals, undefined, 200);
+    });
+  }
+
   /**
    * Cancel an order
    *
