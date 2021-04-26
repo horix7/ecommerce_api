@@ -31,6 +31,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    referal: {
+      type: DataTypes.JSONB,
+      allowNull: false
+    },
     message: {
       type: DataTypes.STRING,
       allowNull: false

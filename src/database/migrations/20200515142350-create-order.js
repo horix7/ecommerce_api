@@ -34,6 +34,10 @@ export const up = (queryInterface, Sequelize) =>
       type: Sequelize.STRING,
       allowNull: false
     },
+    referal: {
+      type: DataTypes.JSONB,
+      allowNull: false
+    },
     status: {
       type: Sequelize.ENUM(
         'pending',

@@ -15,6 +15,7 @@ class OrderService extends BaseService {
       street: body.street,
       message: body.message,
       customer: body.customer,
+      referal: body.referal,
     };
     const order = await super.create(orderData, { plain: true });
 
