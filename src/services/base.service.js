@@ -49,8 +49,8 @@ export default class BaseService {
   } 
 
   async getReferalMade () {
-   const referals = await this.model.sequelize.query(`select referal from \"Orders\"  order by "createdAt" desc`)
-   return convertProduct(referals[0])
+   const referals = await this.model.sequelize.query(`select referal from \"Orders\"  where referal !=null order by "createdAt" desc`)
+   return referals[0]
 
   } 
 
