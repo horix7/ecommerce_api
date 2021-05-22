@@ -43,7 +43,7 @@ export default class BaseService {
 
       return products
     }
-    const featured = await this.model.sequelize.query(`select * from \"Products\"  order by "createdAt" desc  LIMIT 50`)
+    const featured = await this.model.sequelize.query(`select * from \"Products\"  order by \"createdAt\" desc  LIMIT 50`)
     return convertProduct(featured[0])
 
   } 
@@ -58,12 +58,12 @@ export default class BaseService {
 
   async HomePageQuery() {
 
-    const jordans = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"JORDANs"}\'   order by "createdAt" desc  LIMIT 8`)
-    const NIKEDUNKs = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NIKE DUNKs"}\'  order by "createdAt" desc  LIMIT 8`)
-    const NEWBALANCE = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NEW BALANCE"}\'  order by "createdAt" desc  LIMIT 8`)
-    const YEEZY = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"YEEZY"}\'  order by "createdAt" desc  LIMIT 8`)
-    const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\'  order by "createdAt" desc  LIMIT 8`)
-    const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\'  order by "createdAt" desc  LIMIT 8`)
+    const jordans = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"JORDANs"}\'   order by \"createdAt\" desc  LIMIT 8`)
+    const NIKEDUNKs = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NIKE DUNKs"}\'  order by \"createdAt\" desc  LIMIT 8`)
+    const NEWBALANCE = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"NEW BALANCE"}\'  order by \"createdAt\" desc  LIMIT 8`)
+    const YEEZY = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"YEEZY"}\'  order by \"createdAt\" desc  LIMIT 8`)
+    const air_max = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR MAX"}\'  order by \"createdAt\" desc  LIMIT 8`)
+    const air_force = await this.model.sequelize.query(`select * from \"Products\" where collection=\'${"AIR FORCE"}\'  order by \"createdAt\" desc  LIMIT 8`)
 
     const convertProduct  = (products) => {
       products = products.map(elem => {
@@ -135,7 +135,7 @@ export default class BaseService {
   
 
   async findWhereCollection(collection) {
-    const rows = await this.model.sequelize.query(`select * from \"Products\" where \"collection\"=\'${collection}\'`, {
+    const rows = await this.model.sequelize.query(`select * from \"Products\" where \"collection\"=\'${collection}\' order by \"createdAt\" DESC`, {
       plain: false,
       raw: true,
       type: QueryTypes.SELECT

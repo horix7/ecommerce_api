@@ -15,7 +15,7 @@ class Caching {
             }else{
                 res.sendResponse = res.json
                 res.json = (body) => {
-                    memCache.put(key,body, 9200 * 1000);
+                    memCache.put(key,body, 60 * 1000);
                     res.sendResponse(body)
                 }
                 next()

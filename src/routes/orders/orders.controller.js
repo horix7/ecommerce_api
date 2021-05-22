@@ -43,8 +43,6 @@ class OrdersController extends BaseController {
   }
 
   /**
-   * Place an order
-   *
    * @param {object} req - Express Request object
    * @param {object} res - Express Response object
    * @param {Function} res - Express next function
